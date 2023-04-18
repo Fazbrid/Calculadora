@@ -34,6 +34,9 @@
 #equal{
     background-color: blue;
     color: white;
+    
+    grid-column-start: 2;
+    grid-column-end: 5;
 }
 
 .button:hover{

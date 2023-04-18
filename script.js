@@ -20,24 +20,27 @@ function activar(){
     document.getElementById('multiplicacion').disabled = false;
     document.getElementById('dividir').disabled =false;
 }
+
 function calcular(operador,num1,num2){
+    
     let resultado = 0
     switch(operador){
         case '/':
             resultado = num1 / num2
+            break
         case '+' :
-            resultado = num1 + num2 
+            resultado = num1 + num2
+            break 
         case '-':
             resultado = num1 - num2
+            break
         case '*':
             resultado = num1 * num2
+            break
 
     }
-    if(num2 === 0){
-        return 'que paso amigito'
-    }else{
-        return resultado
-    }
+    
+    return resultado
 
 }
 
@@ -53,6 +56,7 @@ buttons.map(button =>{
                     simbolo = '-'
                     desactivar()
                 }
+                break
             case '*':
                 if (display.innerText === ''){
                     break
@@ -73,9 +77,11 @@ buttons.map(button =>{
                     desactivar()
                 }
             case '+':
+
                 if (display.innerText === ''){
                     break
                 }{
+                    
                     anterior = parseInt(display.innerText)
                     display.innerText = ''
                     simbolo = '+'
@@ -98,7 +104,7 @@ buttons.map(button =>{
                 }else{
                     actual = parseInt(display.innerText)
                 }
-               
+                
                 display.innerText = calcular(simbolo,anterior ,actual);
                 simbolo = ''
                 break
