@@ -11,6 +11,9 @@ una sola funcion  a la vez*/
 function desactivar(){
     document.getElementById('suma').disabled = true;
 }
+function activar(){
+    document.getElementById('suma').disabled = false;
+}
 function calcular(operador,num1,num2){
     let suma = 0
     switch(operador){
@@ -25,21 +28,35 @@ buttons.map(button =>{
     button.addEventListener('click',(e)=>{
         switch(e.target.innerText){
             case '+':
-                anterior = parseInt(display.innerText)
-                display.innerText = ''
-                simbolo = '+'
-                desactivar()
+                if (display.innerText=== ''){
+                    break
+                }{
+                    anterior = parseInt(display.innerText)
+                    display.innerText = ''
+                    simbolo = '+'
+                    desactivar()
+                }
+               
                 break
             case 'C':
                 display.innerText = ''
+                activar()
                 break
             case '↞':
                 display.innerText = display.innerText.slice(0,-1)
                 break
             case '=':
-                actual = parseInt(display.innerText)
-                display.innerText = calcular(simbolo,anterior ,actual)
-                
+                if (simbolo === ''){
+                    break
+                }
+                if (display.innerText=== ''){
+                    actual = 0
+                }else{
+                    actual = parseInt(display.innerText)
+                }
+               
+                display.innerText = calcular(simbolo,anterior ,actual);
+                simbolo = ''
                 break
             default:
                 display.innerText += e.target.innerText
