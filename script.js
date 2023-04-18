@@ -11,25 +11,43 @@ una sola funcion  a la vez*/
 function desactivar(){
     document.getElementById('suma').disabled = true;
     document.getElementById('resta').disabled = true;
+    document.getElementById('multiplicacion').disabled = true;
 }
 function activar(){
     document.getElementById('suma').disabled = false;
+    document.getElementById('resta').disabled = false;
+    document.getElementById('multiplicacion').disabled = false;
 }
 function calcular(operador,num1,num2){
-    let suma = 0
+    let resultado = 0
     switch(operador){
+        
         case '+' :
-            suma = num1 + num2    
+            resultado = num1 + num2 
+        case '-':
+            resultado = num1 - num2
+        case '*':
+            resultado = num1 * num2
 
     }
-    return suma
+    return resultado
 }
 
 buttons.map(button =>{
     button.addEventListener('click',(e)=>{
         switch(e.target.innerText){
+            case '*':
+                if (display.innerText === ''){
+                    break
+                }{
+                    anterior = parseInt(display.innerText)
+                    display.innerText = ''
+                    simbolo = '*'
+                    desactivar()
+                }
+                break
             case '-':
-                if (display.innerText=== ''){
+                if (display.innerText === ''){
                     break
                 }{
                     anterior = parseInt(display.innerText)
@@ -38,7 +56,7 @@ buttons.map(button =>{
                     desactivar()
                 }
             case '+':
-                if (display.innerText=== ''){
+                if (display.innerText === ''){
                     break
                 }{
                     anterior = parseInt(display.innerText)
@@ -46,7 +64,6 @@ buttons.map(button =>{
                     simbolo = '+'
                     desactivar()
                 }
-               
                 break
             case 'C':
                 display.innerText = ''
