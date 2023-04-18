@@ -10,6 +10,7 @@ let simbolo = ''
 una sola funcion  a la vez*/ 
 function desactivar(){
     document.getElementById('suma').disabled = true;
+    document.getElementById('resta').disabled = true;
 }
 function activar(){
     document.getElementById('suma').disabled = false;
@@ -27,6 +28,15 @@ function calcular(operador,num1,num2){
 buttons.map(button =>{
     button.addEventListener('click',(e)=>{
         switch(e.target.innerText){
+            case '-':
+                if (display.innerText=== ''){
+                    break
+                }{
+                    anterior = parseInt(display.innerText)
+                    display.innerText = ''
+                    simbolo = '-'
+                    desactivar()
+                }
             case '+':
                 if (display.innerText=== ''){
                     break
