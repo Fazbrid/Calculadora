@@ -12,16 +12,19 @@ function desactivar(){
     document.getElementById('suma').disabled = true;
     document.getElementById('resta').disabled = true;
     document.getElementById('multiplicacion').disabled = true;
+    document.getElementById('dividir').disabled =true;
 }
 function activar(){
     document.getElementById('suma').disabled = false;
     document.getElementById('resta').disabled = false;
     document.getElementById('multiplicacion').disabled = false;
+    document.getElementById('dividir').disabled =false;
 }
 function calcular(operador,num1,num2){
     let resultado = 0
     switch(operador){
-        
+        case '/':
+            resultado = num1 / num2
         case '+' :
             resultado = num1 + num2 
         case '-':
@@ -30,12 +33,26 @@ function calcular(operador,num1,num2){
             resultado = num1 * num2
 
     }
-    return resultado
+    if(num2 === 0){
+        return 'que paso amigito'
+    }else{
+        return resultado
+    }
+
 }
 
 buttons.map(button =>{
     button.addEventListener('click',(e)=>{
         switch(e.target.innerText){
+            case '/':
+                if (display.innerText === ''){
+                    break
+                }{
+                    anterior = parseInt(display.innerText)
+                    display.innerText = ''
+                    simbolo = '-'
+                    desactivar()
+                }
             case '*':
                 if (display.innerText === ''){
                     break
