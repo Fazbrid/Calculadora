@@ -1,21 +1,49 @@
 
-
+/* variables y dom */
 let display = document.getElementById("display")
-
 let buttons = Array.from(document.querySelectorAll(".button"))
+let anterior = 0
+let actual = 0
+let numero = 0
+let simbolo = ''
+/* Desactiva los botones de suma resta multiplicacion y divison para
+una sola funcion  a la vez*/ 
+function desactivar(){
+    document.getElementById('suma').disabled = true;
+}
+function calcular(operador,num1,num2){
+    let suma = 0
+    switch(operador){
+        case '+' :
+            suma = num1 + num2    
 
+    }
+    return suma
+}
 
 buttons.map(button =>{
     button.addEventListener('click',(e)=>{
         switch(e.target.innerText){
-            case 'C':
-                display.innerText= ''
+            case '+':
+                anterior = parseInt(display.innerText)
+                display.innerText = ''
+                simbolo = '+'
+                desactivar()
                 break
-            case'↞':
+            case 'C':
+                display.innerText = ''
+                break
+            case '↞':
                 display.innerText = display.innerText.slice(0,-1)
+                break
+            case '=':
+                actual = parseInt(display.innerText)
+                display.innerText = calcular(simbolo,anterior ,actual)
+                
                 break
             default:
                 display.innerText += e.target.innerText
+
         }
     })
 })
