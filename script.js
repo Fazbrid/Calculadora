@@ -39,7 +39,9 @@ function calcular(operador,num1,num2){
             break
 
     }
-    
+    if (operador === '/' || num2 === 0){
+        return 'que paso amiguito'
+    }
     return resultado
 
 }
